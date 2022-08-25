@@ -33,7 +33,7 @@ const Main = () => {
       const fetchedPosts = response?.data?.result;
       console.log(fetchedPosts);
       //dispatch(postsload(fetchedPosts));
-      setItems(fetchedPosts);
+      setItems((prev) => [...prev, ...fetchedPosts]);
       console.log(items);
       setLastArticleId(
         response?.data?.result[response?.data?.result.length - 1].id
@@ -76,8 +76,8 @@ const Main = () => {
       >
         <Outter>
           {items?.map((item) => (
-            <Box key={item?.id} onClick={() => activeModal(item)}>
-              <img src={`${imageUrl}`} alt={item?.id} />
+            <Box onClick={() => activeModal(item)}>
+              <img src={`${item.images[0]}`} />
             </Box>
           ))}
         </Outter>

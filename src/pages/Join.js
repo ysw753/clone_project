@@ -66,7 +66,7 @@ const Title = styled.h1`
   text-align: center;
 `;
 const FormBox = styled.div`
-  background-color: #cdc7ee;
+  border: 1px soild black;
   width: 500px;
   height: 500px;
   display: flex;

@@ -39,9 +39,18 @@ const DetailModal = ({ closeModal, item }) => {
   //리플 replyRef
   const replyRef = useRef();
 
+  const [image, setImage] = useState("");
+  const [hash, setHash] = useState("");
+
   const fetchSpecificPost = async (postId) => {
     const res = await apis.specificPostLoad(postId);
+    console.log(res);
     setSpecificItem(res.data.result);
+    const hash = res.data.result.hashtags;
+    const image = res.data.result.images[0];
+
+    setImage(image);
+    setHash("#" + hash);
   };
 
   const fetchComment = async (postId) => {
@@ -111,17 +120,14 @@ const DetailModal = ({ closeModal, item }) => {
       <Backdrop onClick={() => closeModal()} />
       <Modal>
         <Image>
-          <img
-            src={
-              "https://cdn.pixabay.com/photo/2016/12/13/05/15/puppy-1903313_960_720.jpg"
-            }
-          ></img>
+          <img src={`${image}`} />
         </Image>
         <Comment>
           <CommentHeader>{+"님의 게시물"}</CommentHeader>
           <CommentContext>
             <FlexBox>
               <h4>{specificItem.content}</h4>
+              <p>{hash}</p>
             </FlexBox>
             {!commentLoading ? (
               <p>Loading...</p>
@@ -190,7 +196,7 @@ const CommentHeader = styled.div`
   border-bottom: 1px solid black;
 `;
 const CommentContext = styled.div`
-  height: 580px;
+  height: 480px;
   overflow: scroll;
   border-bottom: 1px solid black;
 `;
@@ -211,7 +217,7 @@ const FlexBox = styled.div`
 `;
 
 const CommentIcon = styled.div`
-  height: 100px;
+  height: 50px;
   border-bottom: 1px solid black;
 `;
 const CommentInput = styled.div`
@@ -251,9 +257,9 @@ const Backdrop = styled.div`
 const Modal = styled.div`
   background-color: white;
   z-index: 100;
-
+  height: 600px;
   min-width: 70vw;
-  min-height: 70vh;
+  min-height: 60vh;
   position: fixed;
   top: 50%;
   left: 50%;

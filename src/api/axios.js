@@ -22,12 +22,12 @@ const api = axios.create({
 });
 
 export const apis = {
-  load: () => api.get("/api/articles"),
+  load: () => api.get("/api/articles?articleId=9999&size=20"),
   //load: () => api.get("/result"),
   upload: (newPost, accessToken) =>
     api.post("/api/articles", newPost, {
       headers: {
-        "Content-Type": "application/json",
+        "Content-Type": "multipart/form-data",
         credentials: true,
         Authorization: accessToken,
       },

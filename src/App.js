@@ -5,8 +5,7 @@ import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 import NotFound from "./pages/NotFound";
 import MyPosts from "./pages/MyPosts";
-import PersistLogin from "./components/PersistLogin";
-import RequireAuth from "./components/RequireAuth";
+
 import Join from "./pages/Join";
 import Login from "./pages/Login";
 

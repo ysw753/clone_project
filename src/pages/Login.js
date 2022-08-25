@@ -58,7 +58,6 @@ const Title = styled.h1`
   text-align: center;
 `;
 const FormBox = styled.div`
-  background-color: #cdc7ee;
   width: 500px;
   height: 500px;
   display: flex;
@@ -67,6 +66,8 @@ const FormBox = styled.div`
   align-items: center;
   margin: auto;
   form {
+    border: 1px soild black;
+
     display: flex;
     flex-direction: column;
     justify-content: center;
