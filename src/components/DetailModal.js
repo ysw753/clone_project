@@ -110,12 +110,18 @@ const DetailModal = ({ closeModal, item }) => {
     <>
       <Backdrop onClick={() => closeModal()} />
       <Modal>
-        <Image>{/* <img src={`${item.imageUrl}`}></img> */}</Image>
+        <Image>
+          <img
+            src={
+              "https://cdn.pixabay.com/photo/2016/12/13/05/15/puppy-1903313_960_720.jpg"
+            }
+          ></img>
+        </Image>
         <Comment>
           <CommentHeader>{+"님의 게시물"}</CommentHeader>
           <CommentContext>
             <FlexBox>
-              <h4>{specificItem.title}</h4>
+              <h4>{specificItem.content}</h4>
             </FlexBox>
             {!commentLoading ? (
               <p>Loading...</p>

@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { postsAdd } from "../redux/modules/postsSlice";
 import AuthContext from "../api/context/AuthProvider";
 import { apis } from "../api/axios";
+import { addUserPosts } from "../redux/modules/userSlice";
 
 const AddModal = ({ closeModal }) => {
   // auth를 봐보자
@@ -39,6 +40,7 @@ const AddModal = ({ closeModal }) => {
       const res = await apis.upload(newPost, accessToken);
       console.log(res);
       dispatch(postsAdd(newPost));
+      dispatch(addUserPosts(newPost));
       console.log("success");
       closeModal();
     } catch (error) {

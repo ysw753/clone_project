@@ -16,10 +16,13 @@ const MyPosts = () => {
   const { userId } = useParams();
   console.log(userId);
 
+  //쓸데없는 id
+  const [userpostid, setuserPostid] = useState([]);
+
   // fetch articles that user posted
   const fetchUsersPosts = async () => {
     const res = await apis.loadUsersPosts(username, accessToken);
-    console.log(res);
+    setuserPostid(res.data.result.map((i) => i.id));
   };
 
   useEffect(() => {
